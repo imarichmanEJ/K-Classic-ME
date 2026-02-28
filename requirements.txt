@@ -1,0 +1,20 @@
+# Web framework
+fastapi>=0.115.0
+uvicorn[standard]>=0.30.0
+python-multipart>=0.0.12
+aiofiles>=24.1.0
+
+# Environment
+python-dotenv>=1.0.0
+
+# Google GenAI (Gemini, Imagen, Veo)
+google-genai>=1.0.0
+
+# Google TTS
+google-cloud-texttospeech>=2.16.0
+
+# Video assembly (Veo fallback)
+moviepy>=1.0.3
+
+# Image processing
+Pillow>=10.0.0

@@ -1,0 +1,530 @@
+[
+  {
+    "id": "simcheongjeon",
+    "title_korean": "심청전",
+    "title_english": "The Tale of Sim Cheong",
+    "theme": [
+      "효심",
+      "희생",
+      "재생",
+      "부모님 사랑",
+      "운명과 기적"
+    ],
+    "visual_keywords": [
+      "인당수 바다",
+      "폭풍우",
+      "연꽃",
+      "조선시대 초가집",
+      "용궁",
+      "왕궁",
+      "황후 의복",
+      "맹인"
+    ],
+    "visual_keywords_eng": [
+      "Turbulent Indangsu ocean with white waves",
+      "Giant glowing pink lotus flower floating on water",
+      "Underwater Dragon Palace with majestic coral reefs",
+      "Joseon dynasty girl in traditional white Hanbok",
+      "Sacred and sublime atmosphere",
+      "Oriental ink wash painting style with deep blue and gold accents"
+    ],
+    "mood_keywords": [
+      "슬픔",
+      "그리움",
+      "숭고함",
+      "감동",
+      "희생",
+      "재회"
+    ],
+    "art_style": "Korean ink wash painting style (수묵화), soft watercolor wash, muted earth tones with deep blue and gold accents",
+    "ending_question": [
+      "If saving someone you love required a life-changing sacrifice, where would you draw the line?",
+      "Is devotion to family always a virtue, or can it become a burden?",
+      "Do you believe good intentions guarantee good outcomes — or is that just a comforting story we tell ourselves?"
+    ],
+    "total_scenes": 11,
+    "main_scene_no": 7,
+    "costume_characters": {
+      "simcheong": {
+        "costume_default": "Pale yellow jeogori with white ribbon tie, bright red chima flowing to the ground, single black daenggi braided hair hanging down the back, gentle and sorrowful expression.",
+        "costume_variations": {
+          "scene_9": "Elaborate empress Hanbok — layered crimson and gold royal robe with intricate embroidery, ornate gold hair accessories (떠구지) pinned in elaborate updo, dignified and radiant posture.",
+          "scene_10": "Same elaborate empress Hanbok as scene_9, seated on royal throne, searching expression with tears in eyes.",
+          "scene_11": "Same elaborate empress Hanbok as scene_9, kneeling with arms outstretched, tears of joy streaming down face."
+        }
+      }
+    },
+    "scenes": [
+      {
+        "scene_no": 1,
+        "title": "꿈속의 선녀",
+        "desc": "어머니 곽씨 부인의 꿈속에 오색구름과 함께 나타난 신비로운 선녀의 모습"
+      },
+      {
+        "scene_no": 2,
+        "title": "어머니의 이별",
+        "desc": "갓 태어난 심청을 두고 슬프게 눈을 감는 어머니와 오열하는 심봉사"
+      },
+      {
+        "scene_no": 3,
+        "title": "동냥젖으로 자란 아기",
+        "desc": "마을을 돌며 동냥젖을 얻어먹이며 정성으로 심청을 키우는 심봉사"
+      },
+      {
+        "scene_no": 4,
+        "title": "스님과 공양미 삼백 석",
+        "desc": "개천에 빠진 심봉사를 구해준 스님과 공양미 삼백 석을 약속하는 장면"
+      },
+      {
+        "scene_no": 5,
+        "title": "남경 상인의 등장",
+        "desc": "인당수 제물을 찾기 위해 마을에 나타난 배 위의 남경 상인들"
+      },
+      {
+        "scene_no": 6,
+        "title": "팔려 가는 심청",
+        "desc": "아버지의 눈을 뜨게 하려 상인들을 따라 배에 오르는 결연한 심청"
+      },
+      {
+        "scene_no": 7,
+        "title": "용궁에 간 심청",
+        "desc": "바닷속 신비로운 용궁에서 용왕과 시녀들에게 환대받는 환상적인 풍경",
+        "is_main": true
+      },
+      {
+        "scene_no": 8,
+        "title": "심봉사와 뺑덕 어미",
+        "desc": "심청이 떠난 후 뺑덕 어미에게 속아 고생하며 살아가는 심봉사"
+      },
+      {
+        "scene_no": 9,
+        "title": "왕비가 된 심청",
+        "desc": "거대한 연꽃을 타고 바다 위로 솟아올라 황후가 된 아름다운 심청"
+      },
+      {
+        "scene_no": 10,
+        "title": "한양 맹인 잔치",
+        "desc": "전국의 맹인들을 초청하여 아버지를 기다리는 성대한 궁궐 잔치"
+      },
+      {
+        "scene_no": 11,
+        "title": "눈을 뜬 심봉사",
+        "desc": "딸의 목소리에 번쩍 눈을 뜨며 기적적으로 재회하는 감동적인 순간"
+      }
+    ]
+  },
+  {
+    "id": "honggildong",
+    "title_korean": "홍길동전",
+    "title_english": "The Tale of Hong Gildong",
+    "theme": [
+      "신분 차별",
+      "저항",
+      "정의",
+      "이상향",
+      "영웅",
+      "자아 정체성"
+    ],
+    "visual_keywords": [
+      "산 또는 숲 배경",
+      "활빈당 깃발",
+      "관아 창고",
+      "분신술 장면",
+      "율도국 왕궁",
+      "마술",
+      "검술"
+    ],
+    "visual_keywords_eng": [
+      "Mystical Joseon mountain fortress shrouded in fog",
+      "Hero riding on a fast-moving magical cloud",
+      "Multiplication magic with eight identical clones",
+      "Traditional Korean sword and martial arts action",
+      "Vibrant Joseon military uniform",
+      "Dynamic and powerful folk art style with sharp outlines"
+    ],
+    "mood_keywords": [
+      "분노",
+      "통쾌함",
+      "역동적",
+      "자유",
+      "정의감",
+      "활동적",
+      "자신감"
+    ],
+    "art_style": "Korean folk art style Minhwa (민화), vivid colors, flat decorative style, bold outlines, dynamic composition",
+    "ending_question": [
+      "When a system is unfair, is it better to reform it from within — or break away from it entirely?",
+      "Have you ever felt excluded by a rule you didn’t choose? How did you respond?",
+      "Is rebellion justified if the law itself is unjust?"
+    ],
+    "total_scenes": 8,
+    "main_scene_no": 5,
+    "costume_characters": {
+      "hong_gildong": {
+        "costume_default": "Blue and white Joseon martial arts outfit — bright blue jeogori with white collar and cuffs, white baji tucked into white leg wrappings, wide-brimmed traditional bamboo gat hat, red sash belt around waist, sword strapped to back. Confident upright posture.",
+        "costume_variations": {
+          "scene_6": "Joseon government official court uniform — deep blue dopo with gold embroidery, black official gat hat with wings, jade belt around waist, holding official tablet.",
+          "scene_8": "King's royal robe — crimson and gold embroidered dragon robe (곤룡포), ornate gold crown, commanding and regal posture."
+        }
+      }
+    },
+    "scenes": [
+      {
+        "scene_no": 1,
+        "title": "서자로 태어난 길동",
+        "desc": "아버지를 아버지라 부르지 못하고 서러워하는 어린 홍길동"
+      },
+      {
+        "scene_no": 2,
+        "title": "초란의 음모",
+        "desc": "길동을 해치려 자객을 보내는 첩 초란의 어두운 음모"
+      },
+      {
+        "scene_no": 3,
+        "title": "도적 두목이 된 길동",
+        "desc": "깊은 산속 도적 무리의 우두머리가 되어 위엄을 갖춘 길동"
+      },
+      {
+        "scene_no": 4,
+        "title": "의로운 도적 활빈당",
+        "desc": "가난한 백성들에게 곡식을 나누어주는 의로운 도적패 활빈당"
+      },
+      {
+        "scene_no": 5,
+        "title": "여덟 명의 홍길동",
+        "desc": "도술을 부려 여덟 명의 분신으로 나타나 관군을 당황시키는 장면",
+        "is_main": true
+      },
+      {
+        "scene_no": 6,
+        "title": "병조 판서가 된 길동",
+        "desc": "임금에게 병조 판서 벼슬을 받고 당당히 입궐하는 모습"
+      },
+      {
+        "scene_no": 7,
+        "title": "요괴를 물리친 길동",
+        "desc": "요괴로부터 여인들을 구출하고 무술을 뽐내는 역동적인 전투"
+      },
+      {
+        "scene_no": 8,
+        "title": "율도국의 왕",
+        "desc": "바다 건너 율도국에서 백성들의 추대를 받으며 왕위에 오르는 모습"
+      }
+    ]
+  },
+  {
+    "id": "chunhyangjeon",
+    "title_korean": "춘향전",
+    "title_english": "The Tale of Chunhyang",
+    "theme": [
+      "사랑",
+      "절개",
+      "신분 초월",
+      "정의"
+    ],
+    "visual_keywords": [
+      "광한루 정자",
+      "그네",
+      "조선 옥사",
+      "봄날 남원 풍경",
+      "암행어사 마패",
+      "벚꽃"
+    ],
+    "visual_keywords_eng": [
+      "Traditional Gwanghallu Pavilion by a calm pond",
+      "Pink cherry blossoms falling like snow",
+      "High wooden swing in a romantic oriental garden",
+      "Golden Royal Inspector badge (Mapae) glowing",
+      "Elegant and colorful silk Hanbok",
+      "Vibrant and warm traditional Korean color painting style"
+    ],
+    "mood_keywords": [
+      "로맨틱",
+      "그리움",
+      "애틋함",
+      "통쾌함",
+      "설렘",
+      "화려함"
+    ],
+    "art_style": "Vibrant traditional Korean color painting (채색화), warm palette, detailed Hanbok textures, romantic atmosphere",
+    "ending_question": [
+      "Would you risk your safety or status to stay true to someone you love?",
+      "Is loyalty still meaningful in a world where everything changes quickly?",
+      "When power pressures you to compromise your values, what would you protect first?"
+    ],
+    "total_scenes": 8,
+    "main_scene_no": 8,
+    "costume_characters": {
+      "chunhyang": {
+        "costume_default": "Soft pink jeogori with white ribbon tie, white chima flowing to the ground, single black daenggi braided hair hanging down the back.",
+        "costume_variations": {
+          "scene_5": "Torn and disheveled version of pink jeogori, wrists bound, pale and exhausted expression, imprisoned appearance."
+        }
+      },
+      "lee_doryeong": {
+        "costume_default": "Light blue jeogori with deep navy blue vest layered over, black soft cloth headband (복건), long black hair tied back, scholarly young nobleman appearance.",
+        "costume_variations": {
+          "scene_6": "Deep blue dopo with white inner collar, wide-brimmed black gat hat with chin strap, confident and authoritative posture.",
+          "scene_7": "Ragged and torn beige jeogori with dirt stains, disheveled hair, deliberately disguised as a beggar.",
+          "scene_8": "Royal Inspector uniform — deep blue official robe, black gat hat, holding golden Mapae badge raised high."
+        }
+      },
+      "byun_hakdo": {
+        "costume_default": "Dark crimson official robe (관복) with black embroidered trim, wide-brimmed red gat hat with gold ornament and red tassels, large amber prayer beads around neck, heavy black beard and mustache, thick dark eyebrows, greedy and imposing expression."
+      }
+    },
+    "scenes": [
+      {
+        "scene_no": 1,
+        "title": "광한루의 봄날",
+        "desc": "꽃 피는 봄날, 광한루에서 그네를 타는 아름다운 춘향과 이를 멀리서 넋 놓고 바라보는 이 도령"
+      },
+      {
+        "scene_no": 2,
+        "title": "사랑에 빠진 이 도령",
+        "desc": "서로 사랑하는 눈빛으로 바라보며 백년가약을 맺는 춘향과 이 도령"
+      },
+      {
+        "scene_no": 3,
+        "title": "이별의 아픔",
+        "desc": "한양으로 떠나는 이 도령과 눈물로 작별하는 슬픈 이별"
+      },
+      {
+        "scene_no": 4,
+        "title": "신관 사또의 등장",
+        "desc": "탐욕스러운 신관 사또 변학도가 위압적으로 부임하는 행차"
+      },
+      {
+        "scene_no": 5,
+        "title": "옥에 갇힌 춘향",
+        "desc": "수청을 거절하여 칼을 쓰고 차가운 감옥에 갇힌 절개 있는 춘향"
+      },
+      {
+        "scene_no": 6,
+        "title": "장원 급제한 이 도령",
+        "desc": "시험에서 장원으로 급제하여 암행어사 마패를 받는 이 도령"
+      },
+      {
+        "scene_no": 7,
+        "title": "거지꼴로 돌아온 낭군",
+        "desc": "신분을 숨기려 초라한 거지 모습으로 멀리서 춘향을 바라보는 이 도령"
+      },
+      {
+        "scene_no": 8,
+        "title": "암행어사 출두",
+        "desc": "변학도의 생일 잔치상에서 마패를 높이 들고 출두를 외치는 통쾌한 장면",
+        "is_main": true
+      }
+    ]
+  },
+  {
+    "id": "heungbuNnolbu",
+    "title_korean": "흥부와 놀부",
+    "title_english": "The Tale of Heungbu and Nolbu",
+    "theme": [
+      "선과 악",
+      "권선징악",
+      "형제애",
+      "나눔",
+      "행운"
+    ],
+    "visual_keywords": [
+      "초가집 마당",
+      "박 넝쿨",
+      "제비",
+      "보물 상자",
+      "조선 농촌 풍경",
+      "요괴"
+    ],
+    "visual_keywords_eng": [
+      "Huge magical gourds filled with gold coins and silk",
+      "Cute swallow bird carrying a magic seed",
+      "Peaceful Joseon village with thatched-roof houses",
+      "Traditional Korean folk landscape",
+      "Warm humorous and cozy atmosphere",
+      "Minhwa Korean folk art style with flat and decorative colors"
+    ],
+    "mood_keywords": [
+      "따뜻함",
+      "해학",
+      "통쾌함",
+      "가족애",
+      "희망",
+      "다정함"
+    ],
+    "art_style": "Korean folk art style Minhwa (민화), warm earthy tones, humorous and cozy atmosphere, flat decorative colors",
+    "ending_question": [
+      "If you had very little, would you still choose to share?",
+      "Do you believe generosity creates opportunity — or is that just a moral fantasy?",
+      "Why do some people grow kinder in hardship while others grow resentful?"
+    ],
+    "total_scenes": 8,
+    "main_scene_no": 4,
+    "costume_characters": {
+      "heungbu": {
+        "costume_default": "Plain single-color patched jeogori and baji in muted brown tones, visible fabric patches on elbows and knees indicating poverty, simple white headband, worn-out sandals, warm and gentle expression.",
+        "costume_variations": {
+          "scene_4": "Newly wealthy Hanbok — bright and clean jeogori in warm yellow or green, fine silk fabric, no patches, joyful and surprised expression surrounded by pouring treasures."
+        }
+      },
+      "nolbu": {
+        "costume_default": "Dark olive green jeogori with a vest (조끼) layered over it, bright green baji, black gat hat on head, smoking a long pipe, well-fed and pompous posture, greedy expression.",
+        "costume_variations": {
+          "scene_7": "Same outfit but torn and disheveled, gat hat askew, terrified expression as demons pour out of the gourd."
+        }
+      }
+    },
+    "scenes": [
+      {
+        "scene_no": 1,
+        "title": "쫓겨난 흥부네",
+        "desc": "형 놀부에게 쫓겨나 추운 겨울 아이들을 데리고 슬픈 표정으로 집을 나서는 흥부"
+      },
+      {
+        "scene_no": 2,
+        "title": "놀부 집에서의 수모",
+        "desc": "먹을 것을 구하러 놀부에게 갔다가 뺨을 맞고 돌아오는 가련한 흥부"
+      },
+      {
+        "scene_no": 3,
+        "title": "매품을 파는 흥부",
+        "desc": "가족을 위해 남 대신 매를 맞으러 가는 고달픈 흥부의 뒷모습"
+      },
+      {
+        "scene_no": 4,
+        "title": "벼락부자가 된 흥부",
+        "desc": "제비가 물어온 박 속에서 금은보화와 쌀 가마니가 쏟아져 나오는 기적적인 장면",
+        "is_main": true
+      },
+      {
+        "scene_no": 5,
+        "title": "욕심쟁이 놀부",
+        "desc": "소문을 듣고 샘이 나서 흥부 집을 찾아온 탐욕스러운 놀부"
+      },
+      {
+        "scene_no": 6,
+        "title": "제비 다리를 부러뜨리다",
+        "desc": "박씨를 얻기 위해 강제로 제비 다리를 부러뜨리는 심술궂은 놀부"
+      },
+      {
+        "scene_no": 7,
+        "title": "쫄딱 망한 놀부",
+        "desc": "놀부의 박 속에서 도깨비와 구렁이가 나와 집을 망가뜨리는 풍경"
+      },
+      {
+        "scene_no": 8,
+        "title": "잘못을 뉘우치다",
+        "desc": "흥부에게 용서를 구하며 형제가 화해하는 따뜻한 결말"
+      }
+    ]
+  },
+  {
+    "id": "guunmong",
+    "title_korean": "구운몽",
+    "title_english": "The Cloud Dream of the Nine",
+    "theme": [
+      "인생무상",
+      "욕망과 깨달음",
+      "꿈과 현실",
+      "불교적 윤회"
+    ],
+    "visual_keywords": [
+      "불교 사찰",
+      "구름 위 선계",
+      "조선 궁궐 연회",
+      "팔선녀",
+      "연꽃 연못"
+    ],
+    "visual_keywords_eng": [
+      "Surreal celestial world above a sea of clouds",
+      "Floating oriental palaces with golden roofs",
+      "Nine beautiful fairies in ethereal fluttering dresses",
+      "Dreamy misty and psychedelic fantasy world",
+      "Buddhist temple in a deep mountain",
+      "Grand and majestic oriental fantasy art style with cinematic lighting"
+    ],
+    "mood_keywords": [
+      "몽환적",
+      "화려함",
+      "허무함",
+      "신비로움",
+      "철학적"
+    ],
+    "art_style": "Korean ink wash painting style (수묵화), dreamy and ethereal atmosphere, misty mountain scenery, gold and indigo accents",
+    "ending_question": [
+      "If your entire life turned out to be a dream, what would still matter?",
+      "Is success meaningful if it disappears tomorrow?",
+      "Are we chasing happiness — or the idea of happiness?"
+    ],
+    "total_scenes": 10,
+    "main_scene_no": 9,
+    "costume_characters": {
+      "seongjin_yangsoyu": {
+        "costume_default": "Grey Buddhist monk robe (장삼) with wide sleeves, shaved bald head, wooden prayer beads around neck, simple sandals, calm and composed expression.",
+        "costume_variations": {
+          "scene_3": "Reborn as Yang Soyu — white silk jeogori with light blue dopo, black horsehair gat hat, long black hair neatly tied, handsome and confident young nobleman appearance.",
+          "scene_4": "Bright blue official court uniform — blue dopo with gold embroidery, black gat hat, riding a white horse in triumphant return, glorious and proud posture.",
+          "scene_5": "Luxurious silk jeogori in deep indigo with gold patterns, ornate jade belt, surrounded by eight beautiful women in colorful Hanbok.",
+          "scene_6": "Grand prime minister robe — crimson and gold layered official robe, elaborate black official headpiece, commanding and powerful posture at royal banquet.",
+          "scene_7": "Same grand robe as scene_6 but posture slumped, distant and melancholic expression, staring into emptiness.",
+          "scene_8": "Same grand robe as scene_6, startled expression as elderly monk appears before him.",
+          "scene_9": "Back to grey Buddhist monk robe (장삼), shaved bald head, prayer beads, sitting cross-legged in mountain temple, awakened and peaceful expression.",
+          "scene_10": "Same grey Buddhist monk robe as scene_9, serene smile, eyes closed in deep meditation."
+        }
+      }
+    },
+    "scenes": [
+      {
+        "scene_no": 1,
+        "title": "성진의 오만",
+        "desc": "선계에서 수행하던 성진이 팔선녀를 만나 마음이 흔들리는 모습"
+      },
+      {
+        "scene_no": 2,
+        "title": "스승의 꾸짖음",
+        "desc": "육관대사에게 꾸중을 듣고 인간 세상으로 추방되는 성진"
+      },
+      {
+        "scene_no": 3,
+        "title": "양소유로 환생",
+        "desc": "인간 세상의 양소유라는 사대부 집안 귀공자로 태어나는 장면"
+      },
+      {
+        "scene_no": 4,
+        "title": "과거 급제와 출세",
+        "desc": "과거에 급제하여 말을 타고 거리를 지나는 화려한 금의환향"
+      },
+      {
+        "scene_no": 5,
+        "title": "여덟 여인과의 인연",
+        "desc": "여덟 명의 아름다운 여인들과 차례로 인연을 맺는 화려한 풍경"
+      },
+      {
+        "scene_no": 6,
+        "title": "부귀영화의 절정",
+        "desc": "높은 벼슬에 올라 호화로운 궁전에서 연회를 즐기는 모습"
+      },
+      {
+        "scene_no": 7,
+        "title": "인생의 무상함",
+        "desc": "화려함 속에서도 문득 느껴지는 공허함에 시름에 젖은 양소유"
+      },
+      {
+        "scene_no": 8,
+        "title": "깨달음의 계기",
+        "desc": "노승이 나타나 지팡이로 땅을 치며 꿈에서 깨어나라 이르는 순간"
+      },
+      {
+        "scene_no": 9,
+        "title": "꿈에서 깨어나다",
+        "desc": "화려한 궁궐이 안개처럼 사라지며 다시 산사의 수행자 성진으로 돌아오는 장면",
+        "is_main": true
+      },
+      {
+        "scene_no": 10,
+        "title": "불교적 결론",
+        "desc": "인생이 한바탕 꿈임을 깨닫고 다시 수행에 정진하는 성진의 평온한 얼굴"
+      }
+    ]
+  }
+]

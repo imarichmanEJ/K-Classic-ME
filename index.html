@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>K-Classic:Me</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font: Pretendard -->
+    <link rel="stylesheet" as="style" crossorigin
+        href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+    <!-- Swiper CSS (v11) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Pretendard', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#4F46E5', // Indigo-600
+                        primaryHover: '#4338CA', // Indigo-700
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Pretendard', sans-serif;
+            background-color: #f5f0e6;
+            color: #111827;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        #stage2,
+        #stage3 {
+            display: none;
+        }
+
+        #stage2.visible,
+        #stage3.visible {
+            display: flex;
+        }
+
+        #generating-container {
+            display: none;
+        }
+
+        #generating-container.visible {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .swiper {
+            width: 100%;
+            height: 100%;
+        }
+
+        .swiper-slide {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #000;
+        }
+
+        .swiper-slide img.bg-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .narration-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 80px 20px 20px;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.9);
+            color: white;
+            text-align: center;
+            font-size: 1.5rem;
+            line-height: 1.5;
+        }
+
+        .loader {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #4F46E5;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* End Slide */
+        .ending-slide {
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+            font-weight: bold;
+            text-align: center;
+            padding: 3rem;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
+        }
+    </style>
+</head>
+
+<body class="min-h-screen flex flex-col items-center justify-center p-4">
+
+    <!-- Stage 1: Upload -->
+    <div id="stage1" class="w-full max-w-2xl bg-white rounded-2xl shadow-xl p-8 space-y-8 flex flex-col items-center">
+        <div class="text-center space-y-2">
+            <h1 class="text-2xl font-bold text-gray-900 whitespace-nowrap">Become the Hero of Korean Classic Literature
+            </h1>
+            <p class="text-gray-500">Step into K-Literature — where your face meets Korea's greatest stories</p>
+        </div>
+
+        <div id="drop-area"
+            class="w-full flex flex-col items-center justify-center border-2 border-dashed border-gray-300 rounded-xl p-10 cursor-pointer hover:bg-gray-50 transition-colors">
+            <svg class="w-12 h-12 text-gray-400 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path>
+            </svg>
+            <p class="text-gray-600 font-medium">Click or Drag & Drop Photo Here</p>
+            <input type="file" id="file-input" class="hidden" accept="image/*">
+        </div>
+
+        <img id="preview-image" class="hidden w-48 h-48 object-cover rounded-xl shadow-md" alt="Preview">
+
+        <div class="w-full flex flex-col space-y-2">
+            <label class="font-semibold text-gray-700">Narration Language</label>
+            <select id="language-select"
+                class="w-full border border-gray-300 rounded-lg p-3 outline-none focus:ring-2 focus:ring-primary focus:border-transparent cursor-pointer">
+                <option value="Korean">Korean</option>
+                <option value="English">English</option>
+                <option value="Japanese">Japanese</option>
+                <option value="Chinese">Chinese</option>
+            </select>
+        </div>
+
+        <button id="analyze-btn"
+            class="w-full py-4 text-white font-bold rounded-xl bg-gray-400 cursor-not-allowed transition-colors text-lg flex justify-center items-center"
+            disabled>
+            <span id="analyze-text">Analyze Photo</span>
+            <div id="analyze-loader" class="loader ml-3 hidden border-white"
+                style="width: 20px; height: 20px; border-width: 3px;"></div>
+        </button>
+    </div>
+
+    <!-- Stage 2: Recommend -->
+    <div id="stage2" class="w-full max-w-4xl flex-col items-center space-y-8">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">Select Your Story</h2>
+
+        <div id="recommendation-cards" class="grid grid-cols-1 md:grid-cols-3 gap-6 w-full">
+            <!-- Cards will be injected here -->
+        </div>
+
+        <div id="generating-container" class="space-y-4 py-8">
+            <p class="text-lg font-semibold text-gray-700">Crafting Your Legend...</p>
+            <div class="w-80 bg-gray-200 rounded-full h-3 mt-4">
+                <div id="progress-bar" class="bg-indigo-500 h-3 rounded-full transition-all duration-500"
+                    style="width: 0%"></div>
+            </div>
+            <p id="progress-text" class="text-sm text-gray-400 mt-2">0%</p>
+        </div>
+
+        <button id="back-to-stage1-btn"
+            class="text-gray-500 hover:text-gray-700 underline underline-offset-4 pointer">Go Back</button>
+    </div>
+
+    <!-- Stage 3: Storybook Slide -->
+    <div id="stage3" class="w-full h-screen bg-black overflow-hidden flex-col relative">
+        <div
+            class="absolute top-0 w-full z-10 bg-gradient-to-b from-black/80 to-transparent p-4 flex justify-between items-center text-white">
+            <h2 id="story-title" class="text-xl font-bold"></h2>
+            <button id="home-btn"
+                class="px-4 py-2 bg-white/20 hover:bg-white/30 rounded-lg backdrop-blur-sm transition-colors text-sm font-semibold cursor-pointer">Home</button>
+        </div>
+
+        <div class="swiper mySwiper w-full h-full flex-grow">
+            <div class="swiper-wrapper" id="swiper-wrapper">
+                <!-- Slides injected here -->
+            </div>
+            <div class="swiper-button-next text-white/70 hover:text-white transition-colors"></div>
+            <div class="swiper-button-prev text-white/70 hover:text-white transition-colors"></div>
+            <div class="swiper-pagination"></div>
+        </div>
+
+        <!-- Audio Toggle Button -->
+        <button id="audio-toggle-btn"
+            class="absolute bottom-6 right-6 z-20 w-12 h-12 bg-white/20 hover:bg-white/30 backdrop-blur-md rounded-full flex items-center justify-center text-white text-2xl shadow-lg transition-transform hover:scale-105 cursor-pointer">
+            🔊
+        </button>
+    </div>
+
+    <!-- Swiper JS v11 -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        const API_BASE = "http://localhost:8000";
+        let literatureDB = [];
+        let recommendedIds = [];
+        let faceDescription = "";
+
+        // Swiper and Audio State
+        let swiperInstance = null;
+        let isAudioOn = true;
+
+        // Elements
+        const stage1 = document.getElementById('stage1');
+        const stage2 = document.getElementById('stage2');
+        const stage3 = document.getElementById('stage3');
+
+        const dropArea = document.getElementById('drop-area');
+        const fileInput = document.getElementById('file-input');
+        const previewImage = document.getElementById('preview-image');
+        const languageSelect = document.getElementById('language-select');
+        const analyzeBtn = document.getElementById('analyze-btn');
+        const analyzeText = document.getElementById('analyze-text');
+        const analyzeLoader = document.getElementById('analyze-loader');
+
+        const recommendationCards = document.getElementById('recommendation-cards');
+        const generatingContainer = document.getElementById('generating-container');
+        const backToStage1Btn = document.getElementById('back-to-stage1-btn');
+
+        const storyTitle = document.getElementById('story-title');
+        const swiperWrapper = document.getElementById('swiper-wrapper');
+        const homeBtn = document.getElementById('home-btn');
+        const audioToggleBtn = document.getElementById('audio-toggle-btn');
+
+        let selectedFile = null;
+
+        // Init: Load DB on startup
+        window.addEventListener('DOMContentLoaded', async () => {
+            try {
+                const res = await fetch(`${API_BASE}/db`);
+                if (res.ok) {
+                    literatureDB = await res.json();
+                }
+            } catch (e) {
+                console.error("Failed to load DB", e);
+            }
+        });
+
+        // Stage 1: Upload Logic
+        dropArea.addEventListener('click', () => fileInput.click());
+        dropArea.addEventListener('dragover', (e) => { e.preventDefault(); dropArea.classList.add('border-primary', 'bg-blue-50'); });
+        dropArea.addEventListener('dragleave', (e) => { e.preventDefault(); dropArea.classList.remove('border-primary', 'bg-blue-50'); });
+        dropArea.addEventListener('drop', (e) => {
+            e.preventDefault();
+            dropArea.classList.remove('border-primary', 'bg-blue-50');
+            if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
+                handleFile(e.dataTransfer.files[0]);
+            }
+        });
+
+        fileInput.addEventListener('change', (e) => {
+            if (e.target.files && e.target.files.length > 0) {
+                handleFile(e.target.files[0]);
+            }
+        });
+
+        function handleFile(file) {
+            if (!file.type.startsWith('image/')) return;
+            selectedFile = file;
+
+            // Show preview
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                previewImage.src = e.target.result;
+                previewImage.classList.remove('hidden');
+                dropArea.classList.add('hidden');
+
+                // Enable analyze button
+                analyzeBtn.disabled = false;
+                analyzeBtn.classList.remove('bg-gray-400', 'cursor-not-allowed');
+                analyzeBtn.classList.add('bg-primary', 'hover:bg-primaryHover', 'cursor-pointer');
+            };
+            reader.readAsDataURL(file);
+        }
+
+        analyzeBtn.addEventListener('click', async () => {
+            if (!selectedFile) return;
+
+            // UI loading state
+            analyzeBtn.disabled = true;
+            analyzeBtn.classList.remove('bg-primary', 'hover:bg-primaryHover');
+            analyzeBtn.classList.add('bg-gray-400', 'cursor-not-allowed');
+            analyzeText.textContent = "Analyzing...";
+            analyzeLoader.classList.remove('hidden');
+
+            const formData = new FormData();
+            formData.append("file", selectedFile);
+
+            try {
+                const res = await fetch(`${API_BASE}/analyze`, {
+                    method: 'POST',
+                    body: formData
+                });
+
+                if (!res.ok) throw new Error("Analyze API request failed");
+                const data = await res.json();
+
+                faceDescription = data.protagonist_face_description;
+                recommendedIds = data.recommended_ids || [];
+
+                renderRecommendations();
+
+                // Transition to stage 2
+                stage1.classList.add('hidden');
+                stage2.classList.add('visible');
+
+            } catch (e) {
+                alert("Error analyzing photo.");
+                console.error(e);
+            } finally {
+                // Reset UI loading state
+                analyzeBtn.disabled = false;
+                analyzeBtn.classList.remove('bg-gray-400', 'cursor-not-allowed');
+                analyzeBtn.classList.add('bg-primary', 'hover:bg-primaryHover');
+                analyzeText.textContent = "Analyze Photo";
+                analyzeLoader.classList.add('hidden');
+            }
+        });
+
+        // Stage 2: Recommendations
+        function renderRecommendations() {
+            recommendationCards.innerHTML = '';
+            recommendationCards.classList.remove('hidden');
+            generatingContainer.classList.remove('visible');
+            backToStage1Btn.classList.remove('hidden');
+
+            // Find top 3 from DB
+            const recsToDisplay = recommendedIds.slice(0, 3);
+
+            recsToDisplay.forEach(id => {
+                const lit = literatureDB.find(item => String(item.id) === String(id));
+                if (!lit) return;
+
+                const card = document.createElement('div');
+                card.className = "bg-white rounded-2xl shadow-lg cursor-pointer overflow-hidden transform transition duration-300 hover:-translate-y-2 hover:shadow-2xl border border-gray-100 flex flex-col";
+                card.innerHTML = `
+                    <div class="w-full h-48 bg-gray-200">
+                        <img src="${API_BASE}/assets/${lit.id}.png" class="w-full h-full object-cover" onerror="this.src='https://via.placeholder.com/400x300?text=No+Image'" alt="${lit.title_korean}">
+                    </div>
+                    <div class="p-6 text-center">
+                        <h3 class="text-xl font-bold text-gray-900">${lit.title_korean}</h3>
+                    </div>
+                `;
+                card.addEventListener('click', () => generateStory(lit));
+                recommendationCards.appendChild(card);
+            });
+        }
+
+        backToStage1Btn.addEventListener('click', () => {
+            stage2.classList.remove('visible');
+            stage1.classList.remove('hidden');
+        });
+
+        let progressInterval = null;
+
+        function startProgress() {
+            let current = 0;
+            const bar = document.getElementById('progress-bar');
+            const text = document.getElementById('progress-text');
+            progressInterval = setInterval(() => {
+                if (current < 85) {
+                    current += Math.random() * 3;
+                    current = Math.min(current, 85);
+                    bar.style.width = current + '%';
+                    text.textContent = Math.floor(current) + '%';
+                }
+            }, 500);
+        }
+
+        function completeProgress() {
+            clearInterval(progressInterval);
+            const bar = document.getElementById('progress-bar');
+            const text = document.getElementById('progress-text');
+            bar.style.width = '100%';
+            text.textContent = '100%';
+        }
+
+        // Stage 3: Generate Story
+        async function generateStory(lit) {
+            recommendationCards.classList.add('hidden');
+            generatingContainer.classList.add('visible');
+            backToStage1Btn.classList.add('hidden');
+
+            const payload = {
+                literature_id: lit.id,
+                protagonist_face_description: faceDescription,
+                narration_language: languageSelect.value
+            };
+
+            try {
+                startProgress();
+
+                const res = await fetch(`${API_BASE}/generate`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                if (!res.ok) throw new Error("Generate API request failed");
+                const storyData = await res.json();
+
+                completeProgress();
+                renderStory(lit.title_korean, storyData);
+
+            } catch (e) {
+                if (progressInterval) clearInterval(progressInterval);
+                alert("Error generating story.");
+                console.error(e);
+                recommendationCards.classList.remove('hidden');
+                generatingContainer.classList.remove('visible');
+                backToStage1Btn.classList.remove('hidden');
+            }
+        }
+
+        // Shared Audio control functions
+        function stopAllAudios() {
+            document.querySelectorAll('audio').forEach(audio => {
+                audio.pause();
+                audio.currentTime = 0;
+            });
+        }
+
+        function playSlideAudio(index) {
+            if (!isAudioOn) return;
+            const slide = swiperWrapper.children[index];
+            if (!slide) return;
+            const audio = slide.querySelector('audio');
+            if (audio) {
+                audio.currentTime = 0;
+                audio.play().catch(e => console.warn("Auto-play blocked or failed", e));
+            }
+        }
+
+        function renderStory(title, data) {
+            storyTitle.textContent = title;
+            swiperWrapper.innerHTML = '';
+
+            const scenes = Array.isArray(data.scenes) ? data.scenes : [data.scenes];
+
+            scenes.forEach(scene => {
+                const sl = document.createElement('div');
+                sl.className = 'swiper-slide';
+
+                let html = '';
+                if (scene.image_path) {
+                    html += `<img src="${API_BASE}${scene.image_path}" class="bg-image" />`;
+                }
+                if (scene.narration_text) {
+                    html += `<div class="narration-overlay pb-10">${scene.narration_text}</div>`;
+                }
+                if (scene.audio_path) {
+                    html += `<audio src="${API_BASE}${scene.audio_path}"></audio>`;
+                }
+
+                sl.innerHTML = html;
+                swiperWrapper.appendChild(sl);
+            });
+
+            // Add ending slide
+            const endSlide = document.createElement('div');
+            endSlide.className = 'swiper-slide ending-slide';
+            endSlide.style.backgroundImage = `url('${API_BASE}/assets/ending_question_background.jpg')`;
+            endSlide.innerHTML = `<span>${data.ending_question || "이 이야기에 대해 어떻게 생각하시나요?"}</span>`;
+
+            swiperWrapper.appendChild(endSlide);
+
+            // Transition UI
+            stage2.classList.remove('visible');
+            stage3.classList.add('visible');
+
+            initSwiper();
+        }
+
+        function initSwiper() {
+            if (swiperInstance) {
+                swiperInstance.destroy(true, true);
+                swiperInstance = null;
+            }
+
+            // Swiper initialization inside setTimeout
+            setTimeout(() => {
+                swiperInstance = new Swiper(".mySwiper", {
+                    effect: "slide",
+                    speed: 800,
+                    navigation: {
+                        nextEl: ".swiper-button-next",
+                        prevEl: ".swiper-button-prev",
+                    },
+                    pagination: {
+                        el: ".swiper-pagination",
+                        clickable: true,
+                    },
+                    on: {
+                        afterInit: function () {
+                            setTimeout(() => {
+                                playSlideAudio(this.activeIndex);
+                            }, 500);
+                        },
+                        slideChange: function () {
+                            stopAllAudios();
+                            const idx = this.activeIndex;
+                            setTimeout(() => {
+                                playSlideAudio(idx);
+                            }, 300);
+                        }
+                    }
+                });
+            }, 100);
+        }
+
+        // Voice Toggle Behavior
+        function updateAudioToggleBtn() {
+            audioToggleBtn.textContent = isAudioOn ? '🔊' : '🔇';
+            if (isAudioOn) {
+                audioToggleBtn.classList.remove('bg-gray-500/50');
+                audioToggleBtn.classList.add('bg-white/20');
+            } else {
+                audioToggleBtn.classList.remove('bg-white/20');
+                audioToggleBtn.classList.add('bg-gray-500/50');
+            }
+        }
+
+        audioToggleBtn.addEventListener('click', () => {
+            isAudioOn = !isAudioOn;
+            updateAudioToggleBtn();
+
+            if (isAudioOn) {
+                if (swiperInstance) {
+                    playSlideAudio(swiperInstance.activeIndex);
+                }
+            } else {
+                stopAllAudios();
+            }
+        });
+
+        // Resets the app to initial state
+        homeBtn.addEventListener('click', resetApp);
+
+        function resetApp() {
+            stopAllAudios();
+
+            if (swiperInstance) {
+                swiperInstance.destroy(true, true);
+                swiperInstance = null;
+            }
+
+            // Reset state
+            if (progressInterval) clearInterval(progressInterval);
+            const bar = document.getElementById('progress-bar');
+            const text = document.getElementById('progress-text');
+            if (bar) bar.style.width = '0%';
+            if (text) text.textContent = '0%';
+
+            selectedFile = null;
+            fileInput.value = '';
+            previewImage.src = '';
+            previewImage.classList.add('hidden');
+            dropArea.classList.remove('hidden');
+
+            // Reset analyze btn
+            analyzeBtn.disabled = true;
+            analyzeBtn.classList.remove('bg-primary', 'hover:bg-primaryHover', 'cursor-pointer');
+            analyzeBtn.classList.add('bg-gray-400', 'cursor-not-allowed');
+            analyzeText.textContent = "Analyze Photo";
+
+            // Revert to Stage 1
+            stage3.classList.remove('visible');
+            stage2.classList.remove('visible');
+            stage1.classList.remove('hidden');
+
+            generatingContainer.classList.remove('visible');
+            recommendationCards.classList.remove('hidden');
+        }
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,6 @@
+.env
+outputs/
+story_output.json
+__pycache__/
+*.pyc
+korean_literature_test.json
